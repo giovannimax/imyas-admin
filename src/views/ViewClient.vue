@@ -83,13 +83,13 @@ export default {
       },
       deactivate() {
           let docs = {
-            '_id': this.artist.userId,
+            '_id': this.$route.params.id,
             'active': !this.artist.active
           }
             this.$api('users')
             .save(docs)
             .then(res => {
-              this.getUser('artists', this.$route.params.id)
+              this.getUser('users', this.$route.params.id)
                 console.log(res.data);
             }).catch(error => {
                console.log(error);
